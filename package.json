@@ -1,0 +1,22 @@
+{
+  "name": "p2p-chat-electron",
+  "version": "1.0.0",
+  "description": "P2P Chat Application using Electron",
+  "main": "main.js",
+  "scripts": {
+    "start": "electron .",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "p2p",
+    "chat",
+    "electron",
+    "node.js"
+  ],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "electron": "^29.1.0",
+    "ip": "^1.1.8"
+  }
+}
