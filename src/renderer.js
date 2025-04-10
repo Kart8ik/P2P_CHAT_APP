@@ -154,7 +154,39 @@ function updatePeersList(peers) {
 // Display a message in the chat window
 function displayMessage(timestamp, sender, senderIp, message) {
   const messageElement = document.createElement('div');
-  messageElement.textContent = `[${timestamp}] ${sender} (${senderIp}): ${message}`;
+  messageElement.id = `messageElement`;
+  messageElement.style.display = 'flex';
+  messageElement.style.flexDirection = 'column';
+
+
+  const senderElement = document.createElement('strong');
+  senderElement.textContent = `${sender}\t`;
+
+  const timeElement = document.createElement('div');
+  timeElement.textContent = `${timestamp}`;
+  timeElement.style.alignSelf = 'flex-end';
+
+  const messageText = document.createTextNode(` ${message}`);
+
+  // Append sender and message to the messageElement
+  messageElement.appendChild(senderElement);
+  messageElement.appendChild(messageText);
+  messageElement.appendChild(timeElement);
+
+  if (sender === "You") {
+    messageElement.style.alignSelf = 'flex-end';
+  } else {
+    messageElement.style.alignSelf = 'flex-start';
+  }
+
+  messageElement.style.backgroundColor = '#9CAA88'; 
+  messageElement.style.color = 'black'; 
+  messageElement.style.padding = '5px';
+  messageElement.style.borderRadius = '5px'; 
+  messageElement.style.marginBottom = '5px';
+  messageElement.style.minWidth = '100px';
+  messageElement.style.width = 'fit-content';
+
   messageDisplay.appendChild(messageElement);
   messageDisplay.scrollTop = messageDisplay.scrollHeight;
 }
@@ -163,7 +195,15 @@ function displayMessage(timestamp, sender, senderIp, message) {
 function displaySystemMessage(message) {
   const timestamp = new Date().toLocaleTimeString();
   const messageElement = document.createElement('div');
-  messageElement.textContent = `[${timestamp}] SYSTEM: ${message}`;
+  messageElement.id = `messageElement`;
+  messageElement.textContent = `${message}`;
+  messageElement.style.backgroundColor = 'grey'; 
+  messageElement.style.color = 'white'; 
+  messageElement.style.padding = '5px';
+  messageElement.style.borderRadius = '5px'; 
+  messageElement.style.marginBottom = '5px';
+  messageElement.style.width = 'fit-content'; 
+  messageElement.style.alignSelf = 'center';
   messageDisplay.appendChild(messageElement);
   messageDisplay.scrollTop = messageDisplay.scrollHeight;
 }

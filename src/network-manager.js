@@ -320,7 +320,7 @@ class NetworkManager {
     }
     
     if (successCount > 0) {
-      this.logMessage(`Message sent to ${successCount} peer(s)`);
+      // this.logMessage(`Message sent to ${successCount} peer(s)`);
     } else {
       this.logMessage('Failed to send message to any selected peers');
     }
