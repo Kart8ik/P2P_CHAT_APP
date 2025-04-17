@@ -124,11 +124,11 @@ class NetworkManager {
       this.startTcpServer();
       
       // Log startup information
-      this.logMessage(`P2P Chat started on ${this.localIp}`);
+      this.logMessage(`Connection to the Void started on ${this.localIp}`);
       this.logMessage(`UDP Discovery: Port ${this.UDP_PORT}`);
       this.logMessage(`TCP Messaging: Port ${this.TCP_PORT}`);
-      this.logMessage(`Your nickname: ${this.nickname}`);
-      this.logMessage('Discovering peers...');
+      this.logMessage(`Your agent alias: ${this.nickname}`);
+      this.logMessage('Discovering agents...');
       
       return true;
     } catch (error) {

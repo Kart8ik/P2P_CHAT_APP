@@ -37,7 +37,7 @@ startBtn.addEventListener('click', startP2P);
 
 // Initialize educational content
 function initializeEducationalContent() {
-  const content = `🔹 P2P Chat Application:
+  const content = `🔹 P2P_EchoVoid:
 - Uses both TCP and UDP protocols
 - UDP for peer discovery (broadcast)
 - TCP for reliable messaging
@@ -115,9 +115,9 @@ function sendMessage() {
 
   const message = messageEntry.value.trim();
   if (message) {
-    // Get selected peer IPs
-    const selectedOptions = Array.from(peersListbox.selectedOptions);
-    const selectedPeers = selectedOptions.map(option => {
+    // Get all peer IPs
+    const allOptions = Array.from(peersListbox.options);
+    const allPeers = allOptions.map(option => {
       // Extract IP from format "Nickname (IP)"
       const peerEntry = option.text;
       const ipStart = peerEntry.lastIndexOf('(') + 1;
@@ -128,8 +128,8 @@ function sendMessage() {
       return null;
     }).filter(ip => ip !== null);
 
-    // Send message to selected peers
-    networkManager.sendMessageToSelectedPeers(selectedPeers, message);
+    // Send message to all peers
+    networkManager.sendMessageToSelectedPeers(allPeers, message);
 
     // Clear message entry
     messageEntry.value = '';
@@ -147,8 +147,12 @@ function updatePeersList(peers) {
     const option = document.createElement('option');
     option.text = `${nickname} (${ip})`;
     option.value = ip;
+    option.selected = true; // Select all options by default
     peersListbox.add(option);
   }
+
+  // Ensure all options are selected by default
+  Array.from(peersListbox.options).forEach(option => option.selected = true);
 }
 
 // Display a message in the chat window
@@ -178,15 +182,16 @@ function displayMessage(timestamp, sender, senderIp, message) {
   } else {
     messageElement.style.alignSelf = 'flex-start';
   }
-  Object.assign(messageElement.style,{
-    backgroundColor:'#9CAA88',
-    color:'black',
-    padding:'5px',
-    borderRadius:'5px', 
-    marginBottom :'5px',
-    minWidth:'100px',
+  Object.assign(messageElement.style, {
+    backgroundColor: '#000000',
+    color: '#6ef8de',
+    padding: '5px',
+    borderRadius: '5px',
+    border: '2px solid #6ef8de',
+    marginBottom: '5px',
+    minWidth: '100px',
     width: 'fit-content',
-  })
+  });
   messageDisplay.appendChild(messageElement);
   messageDisplay.scrollTop = messageDisplay.scrollHeight;
 }
@@ -197,13 +202,13 @@ function displaySystemMessage(message) {
   const messageElement = document.createElement('div');
   messageElement.textContent = message;
   Object.assign(messageElement.style, {
-    backgroundColor: 'grey',
-    color: 'white',
-    padding: '5px',
-    borderRadius: '5px',
+    backgroundColor:'#000000',
+    color:'#6ef8de',
+    padding:'5px',
+    borderRadius:'5px', 
+    border: '1px solid #6ef8de',
     marginBottom: '5px',
     width: 'fit-content',
-    boxShadow: '0 0.2vw 0.4vw rgba(0, 0, 0, 0.4)',
     alignSelf: 'center',
   });
   messageDisplay.appendChild(messageElement);
@@ -248,8 +253,8 @@ window.addEventListener('beforeunload', () => {
 // Initialize app
 function initialize() {
   // Display welcome message
-  displaySystemMessage('Welcome to P2P Chat Application!');
-  displaySystemMessage('Enter your nickname and click \'Start\' to join the P2P network.');
+  displaySystemMessage('You have joined P2P_EchoVoid');
+  displaySystemMessage('Enter your agent alias and click \'Start\' to join the P2P network.');
 
   // Initialize educational content
   initializeEducationalContent();
