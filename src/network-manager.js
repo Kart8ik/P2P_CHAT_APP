@@ -253,7 +253,7 @@ class NetworkManager {
     });
   }
   
-  sendMessageToPeer(peerIp, message) {
+  sendMessageToPeer(peerIp, message, index) {
     if (!this.peers[peerIp]) {
       this.logMessage(`Unknown peer: ${peerIp}`);
       return false;
@@ -286,7 +286,9 @@ class NetworkManager {
         
         // Display in our own chat
         if (this.onMessageReceived) {
-          this.onMessageReceived(timestamp, 'You', peerIp, message);
+          if(index===1){
+            this.onMessageReceived(timestamp, 'You', peerIp, message);
+          }
         }
         
         // Close connection
@@ -313,10 +315,12 @@ class NetworkManager {
     
     // Send to each selected peer
     let successCount = 0;
+    let index=1;
     for (const peerIp of selectedPeers) {
-      if (this.sendMessageToPeer(peerIp, message)) {
+      if (this.sendMessageToPeer(peerIp, message,index)) {
         successCount += 1;
       }
+      index+=1;
     }
     
     if (successCount > 0) {
