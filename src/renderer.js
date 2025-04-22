@@ -63,7 +63,7 @@ function initializeEducationalContent() {
 - Each number: 0-255
 - Used to identify devices on network
 
-Enter your nickname and click 'Start' to join the P2P network!`;
+Enter your agent alias and click 'Start' to join the P2P network!`;
 
   eduText.textContent = content;
 }

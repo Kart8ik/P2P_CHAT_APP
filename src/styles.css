@@ -216,7 +216,7 @@ input:focus {
 }
 
 .edu-text {
-  height: 25vh;
+  height: 27vh;
   overflow-y: auto;
   padding: 1vh;
   background-color: #000000; /* Pure black background */
