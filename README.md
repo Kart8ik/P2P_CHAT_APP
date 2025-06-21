@@ -19,8 +19,8 @@ The app features a sleek hacker-themed interface and uses:
 ### 1. Clone the Repository
 
 ```bash
-git clone https://github.com/yourusername/P2P-EchoVoid.git
-cd P2P-EchoVoid
+git clone https://github.com/kart8ik/P2P_CHAT_APP.git
+cd P2P_CHAT_APP
 ```
 
 ### 2. Install the dependencies
